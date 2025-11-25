@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Учимся определять время по часам</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Comic Sans MS', 'Marker Felt', sans-serif;
+      background: #fff;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: #ff5722;
+      text-shadow: 2px 2px 0 #ffd54f;
+    }
+
+    section {
+      background: rgba(255, 255, 255, 0.85);
+      margin: 30px auto;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      border: 4px dashed #4caf50;
+    }
+
+    h2 {
+      color: #e91e63;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      padding-left: 25px;
+      margin-bottom: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .benefits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .benefit {
+      background: #e3f2fd;
+      padding: 15px;
+      border-radius: 12px;
+      flex: 1 1 200px;
+      border-left: 4px solid #2196f3;
+    }
+
+    .stores {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 25px;
+      font-size: 1.3rem;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      color: white;
+      transition: transform 0.2s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .wildberries { background: #ff3366; }
+    .ozon { background: #00b2ff; }
+
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      font-size: 1rem;
+      color: #666;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.4rem; }
+      p, li { font-size: 1rem; }
+    }
+	 .trainer-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .trainer-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .trainer-image {
+      flex: 0 0 auto;
+      max-width: 320px;
+    }
+
+    .trainer-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      display: block;
+    }
+
+    /* На мобильных — картинка под текстом */
+    @media (max-width: 768px) {
+      .trainer-row {
+        flex-direction: column;
+      }
+
+      .trainer-image {
+        max-width: 100%;
+      }
+    }
+	    .trainer-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .trainer-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .trainer-image {
+      flex: 0 0 auto;
+      max-width: 320px;
+    }
+
+    .trainer-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      display: block;
+    }
+
+    /* На мобильных — картинка под текстом */
+    @media (max-width: 768px) {
+      .trainer-row {
+        flex-direction: column;
+      }
+
+      .trainer-image {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bgCanvas"></canvas>
+
+  <div class="container">
+    <header>
+      <h1>⏱️ Учимся определять время по часам легко и весело!</h1>
+    </header>
+
+    <section>
+      <h2>Почему важно уметь определять время по часам?</h2>
+      <p>
+        Сегодня всё меньше детей умеют читать время по стрелочным часам. А ведь это важный навык!  
+        Школьники сталкиваются с такими часами на уроках, вокзалах.  
+        Умение ориентироваться во времени развивает логику, внимание и чувство ответственности.
+      </p>
+    </section>
+
+
+   <section>
+  <h2>Знакомьтесь — тренажёр для изучения времени!</h2>
+
+  <div class="trainer-row">
+    <div class="trainer-text">
+      <p>
+        Наш тренажёр — это яркий, удобный и <strong>многоразовый</strong> инструмент для обучения.  
+      <p>    Ребёнок не просто смотрит на часы — он сам может вращать стрелки и понимать работу часов изнутри.</p> 
+	<p> 	Наши часы со стрелками не простые. Помимо главного циферблата на них имеется <strong>дополнительный циферблат</strong>, а на стрелочках есть <strong>специальные отверстия</strong>,которые помогут понять, и самое главное, запомнить, что же значит, когда длинная и короткая стрелка указывают, например, на цифру 6 главного циферблата.</p></p>
+
+      <div class="benefits">
+        <div class="benefit">
+          ✍️ <strong>Пиши-стирай!</strong><br>
+          Маркер легко стирается салфеткой, что позволяет использовать тренажёр неограниченное количество раз.
+        </div>
+        <div class="benefit">
+          💧 <strong>Водостойкий!</strong><br>
+          Прочный материал не боится воды и загрязнений.
+        </div>
+        <div class="benefit">
+          📝 <strong>Вспомогательный циферблат!</strong><br>
+          Есть вспомогательный циферблат, который на начальных этапах позволяет понять и быстрее запомнить, указания часовой и минутной стрелок, а затем его можно закрыть листом и дать ребёнку тренажёр потренироваться уже без подсказок!
+
+        </div>
+      </div>
+ <p> 
+		   
+		   
+		   
+		   </p>
+      <h3>Какие упражнения можно выполнять с данным тренажёром?</h3>
+      <ul>
+	   <p> 
+		   
+		   
+		   
+		   </p>
+        <li>Установить часовую и минутную стрелку на часах, указать время суток и попросить ребёнка записать время в специальном окне.</li>
+        <li>Записать время в окне цифрового циферблата (например, 9:15) и попросить ребёнка установить стрелки таким образом, чтобы они указывали на написанное время.</li>
+      </ul>
+    </div>
+
+    <div class="trainer-image">
+      <img src="https://i.postimg.cc/90G6vh6t/CASY-PECAT'̱-2207-kopia.png" 
+           alt="Тренажёр для изучения времени">
+		   <p> 
+		   
+		   
+		   
+		   </p>
+		   <p> </p>
+		   <p> </p>
+		   <p> </p>
+      <img src="https://i.postimg.cc/3Rvv2Sv6/Generated-Image-October-28-2025-3-56PM.png" 
+           alt="Тренажёр для изучения времени">
+    </div>
+  </div>
+</section>
+      
+    </section>
+
+    <section class="stores">
+      <h2>Где купить?</h2>
+      <p>Тренажёр уже ждёт вас на популярных маркетплейсах!</p>
+      <a href="https://www.wildberries.ru/catalog/625911843/detail.aspx" target="_blank" class="btn wildberries">🛒 Wildberries</a>
+      <a href="https://www.ozon.ru/product/kalendar-chistki-zubov-dlya-detey-igra-motivator-na-lipuchkah-1655462427/?at=NOtwy79vvcL30GR1cBKWY34IJEV12YfJrpgOru0jyjmY" target="_blank" class="btn ozon">🛒 Ozon</a>
+    </section>
+
+    <footer>
+      <p>Научите ребёнка определять время — подарите ему уверенность в завтрашнем дне!</p>
+      <p>© 2025 Тренажёр для изучения времени — учимся легко и весело!</p>
+    </footer>
+  </div>
+
+  <script>
+    // Радужный анимированный фон через Canvas
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    let hue = 0;
+    function animate() {
+      hue = (hue + 0.2) % 360;
+      ctx.fillStyle = `hsla(${hue}, 80%, 85%, 0.3)`;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Рисуем случайные плавающие "часики" по фону
+      for (let i = 0; i < 8; i++) {
+        const x = (Math.sin(Date.now() * 0.001 + i) * canvas.width * 0.4 + canvas.width * 0.5);
+        const y = (Math.cos(Date.now() * 0.0008 + i) * canvas.height * 0.4 + canvas.height * 0.5);
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(Date.now() * 0.0001 + i);
+        ctx.strokeStyle = `hsl(${(hue + i * 30) % 360}, 90%, 60%)`;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(0, 0, 20, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(12, 0);
+        ctx.lineTo(0, -8);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
